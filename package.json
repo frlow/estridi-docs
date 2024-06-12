@@ -1,0 +1,19 @@
+{
+  "name": "estridi-docs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "serve -p 8080 public",
+    "dev": "playwright test --ui",
+    "estridi": "estridi"
+  },
+  "devDependencies": {
+    "estridi": "^0.3.20",
+    "serve": "^14.2.3",
+    "@playwright/test": "^1.44.1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

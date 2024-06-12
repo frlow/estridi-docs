@@ -1,0 +1,7 @@
+tests/
+node_modules/
+estridi.json
+pnpm-lock.yaml
+test-results/
+.idea/
+.vscode/
