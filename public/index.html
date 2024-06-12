@@ -1,12 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Estridi Tutorial</title>
-  <script src="//unpkg.com/alpinejs" defer></script>
+    <title>Estridi Tutorial</title>
+
 </head>
 
 <body>
-<h1>Hello World!</h1>
+<h1>Estridi tutorial</h1>
+<div style="display: flex; flex-direction: column; width: 10rem;">
+    <label for="name">Name</label>
+    <input id="name" type="text">
+    <label for="birthday">Birthday</label>
+    <input id="birthday" type="date">
+</div>
+<div style="display: flex; flex-direction: row; width: 10rem;">
+    <button id="clear">Clear</button>
+</div>
+<script>
+  document.getElementById("clear").addEventListener("click", ()=>{
+    document.getElementById("name").value=""
+    document.getElementById("birthday").value=""
+  })
+</script>
 </body>
 
 </html>
