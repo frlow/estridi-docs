@@ -105,6 +105,31 @@ switch(args.key){
 
 Implement corresponding input fields in the html
 
+## Gateways
+- Link gateways subflow
+- Rerun estridi
+- Validate subflow doesn't do anything an can be skipped. 
+
+The handleAction function has access to the gateways object 
+that has the gateway options for the current path. 
+This can be used to determine the behavior of the action. 
+
+```javascript
+switch (args.key) {
+      // ...
+      case "12:810: Submit clicked":
+        if(args.gateways["24:1050: Any validation errors"]==="no"){
+          await args.page.getByLabel("Name").fill("Namn Namnsson")
+          await args.page.getByLabel("Birthday").fill('2024-06-13')
+          await args.page.locator("#submit").click()
+        }
+        else{
+          await args.page.locator("#submit").click()
+        }
+        break
+    }
+```
+
 ## Concepts demoed
 - [x] Estridi config file
 - [x] Connecting root nodes
@@ -118,9 +143,9 @@ Implement corresponding input fields in the html
 - [x] Table requirements changing
 - [x] Testing non-linked sub-flows
 - [x] Reading tables
-- [ ] Action
+- [x] Action
+- [x] Gateways
 - [ ] ServiceCall
-- [ ] Gateways
 
 ## Advanced
 - [ ] Breaking out separate files
