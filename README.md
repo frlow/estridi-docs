@@ -130,6 +130,41 @@ switch (args.key) {
     }
 ```
 
+## Mock serviceCall
+- Link serviceCalls subflow
+- Rerun estridi
+- Mock the service call
+
+```javascript
+switch (args.key) {
+  // ...
+  case "25:1172: submit": {
+    const gwValue = args.gateways['3895:5989: Error from validate service']
+    if (gwValue === 'yes')
+      await args.context.route(
+              "/submit",
+              async (route: Route) => {
+                await route.fulfill({
+                  status: 400,
+                })
+              }
+      )
+    else {
+      await args.context.route(
+              "/submit",
+              async (route: Route) => {
+                await route.fulfill({
+                  contentType: 'application/json',
+                  json: {message: "Well done!"},
+                })
+              }
+      )
+    }
+    break
+  }
+}
+```
+
 ## Concepts demoed
 - [x] Estridi config file
 - [x] Connecting root nodes
@@ -145,7 +180,7 @@ switch (args.key) {
 - [x] Reading tables
 - [x] Action
 - [x] Gateways
-- [ ] ServiceCall
+- [x] ServiceCall
 
 ## Advanced
 - [ ] Breaking out separate files

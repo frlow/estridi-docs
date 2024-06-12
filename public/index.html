@@ -2,7 +2,6 @@
 <html>
 <head>
     <title>Estridi Tutorial</title>
-
 </head>
 
 <body>
@@ -18,18 +17,22 @@
     <button id="clear">Clear</button>
     <button id="submit">Submit</button>
 </div>
+<h1 id="message" style="color: green;"></h1>
 <script>
-  document.getElementById("clear").addEventListener("click", ()=>{
-    document.getElementById("name").value=""
-    document.getElementById("birthday").value=""
-    document.getElementById("validation").innerHTML=""
+  document.getElementById("clear").addEventListener("click", () => {
+    document.getElementById("name").value = ""
+    document.getElementById("birthday").value = ""
+    document.getElementById("validation").innerHTML = ""
   })
-  document.getElementById("submit").addEventListener("click", ()=>{
-    if(document.getElementById("name").value==="" || document.getElementById("birthday").value===""){
-      document.getElementById("validation").innerHTML="Error!"
-    }
-    else{
-      document.getElementById("validation").innerHTML=""
+  document.getElementById("submit").addEventListener("click", () => {
+    if (document.getElementById("name").value === "" || document.getElementById("birthday").value === "") {
+      document.getElementById("validation").innerHTML = "validation error"
+    } else {
+      document.getElementById("validation").innerHTML = ""
+      fetch("/submit.json")
+        .then(r => r.json())
+        .then((data) => document.getElementById("message").innerHTML = data.message)
+        .catch(() => document.getElementById("validation").innerHTML = "service error")
     }
   })
 </script>
