@@ -187,4 +187,4 @@ switch (args.key) {
 - [ ] Variants
 - [ ] Filter paths
 - [ ] Setup-state
-- [ ] Skipping tests
+- [x] Skipping tests
