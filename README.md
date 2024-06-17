@@ -165,6 +165,12 @@ switch (args.key) {
 }
 ```
 
+# Advanced features
+
+## Filter paths
+
+## Variants
+
 ## Breaking out separate files
 You can define a function with types based on Handles
 ```typescript
@@ -183,6 +189,7 @@ const actionHandles: DemoHandles["handleAction"] = async args => {}
 - [x] Including tables
 - [x] Table requirements changing
 - [x] Testing non-linked sub-flows
+- [x] Skipping tests
 - [x] Reading tables
 - [x] Action
 - [x] Gateways
@@ -191,6 +198,5 @@ const actionHandles: DemoHandles["handleAction"] = async args => {}
 ## Advanced
 - [x] Variants
 - [x] Filter paths
-- [ ] Setup-state
-- [x] Skipping tests
 - [x] Breaking out separate files
+- [ ] Setup-state
