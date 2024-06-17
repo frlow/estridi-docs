@@ -183,8 +183,8 @@ switch (args.key) {
 - [x] ServiceCall
 
 ## Advanced
-- [ ] Breaking out separate files
 - [ ] Variants
-- [ ] Filter paths
+- [x] Filter paths
 - [ ] Setup-state
 - [x] Skipping tests
+- [ ] Breaking out separate files

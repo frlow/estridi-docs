@@ -18,6 +18,11 @@
     <button id="submit">Submit</button>
 </div>
 <h1 id="message" style="color: green;"></h1>
+<div>
+    <button id="a-button">Show A</button>
+    <button id="b-button">Show B</button>
+    <div id="a-or-b"></div>
+</div>
 <script>
   document.getElementById("clear").addEventListener("click", () => {
     document.getElementById("name").value = ""
@@ -35,6 +40,8 @@
         .catch(() => document.getElementById("validation").innerHTML = "service error")
     }
   })
+  document.getElementById("a-button").addEventListener("click",()=>document.getElementById("a-or-b").innerHTML="A")
+  document.getElementById("b-button").addEventListener("click",()=>document.getElementById("a-or-b").innerHTML="B")
 </script>
 </body>
 
