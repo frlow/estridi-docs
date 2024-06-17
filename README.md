@@ -165,6 +165,12 @@ switch (args.key) {
 }
 ```
 
+## Breaking out separate files
+You can define a function with types based on Handles
+```typescript
+const actionHandles: DemoHandles["handleAction"] = async args => {}
+```
+
 ## Concepts demoed
 - [x] Estridi config file
 - [x] Connecting root nodes
@@ -183,8 +189,8 @@ switch (args.key) {
 - [x] ServiceCall
 
 ## Advanced
-- [ ] Variants
+- [x] Variants
 - [x] Filter paths
 - [ ] Setup-state
 - [x] Skipping tests
-- [ ] Breaking out separate files
+- [x] Breaking out separate files

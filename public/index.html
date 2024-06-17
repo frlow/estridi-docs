@@ -23,6 +23,14 @@
     <button id="b-button">Show B</button>
     <div id="a-or-b"></div>
 </div>
+<div>
+    <select id="numbers">
+        <option value="Ett">One</option>
+        <option value="Två">Two</option>
+        <option value="Tre">Three</option>
+    </select>
+    <div id="translation"></div>
+</div>
 <script>
   document.getElementById("clear").addEventListener("click", () => {
     document.getElementById("name").value = ""
@@ -40,8 +48,9 @@
         .catch(() => document.getElementById("validation").innerHTML = "service error")
     }
   })
-  document.getElementById("a-button").addEventListener("click",()=>document.getElementById("a-or-b").innerHTML="A")
-  document.getElementById("b-button").addEventListener("click",()=>document.getElementById("a-or-b").innerHTML="B")
+  document.getElementById("a-button").addEventListener("click", () => document.getElementById("a-or-b").innerHTML = "A")
+  document.getElementById("b-button").addEventListener("click", () => document.getElementById("a-or-b").innerHTML = "B")
+  document.getElementById("numbers").addEventListener("change", (e) => document.getElementById("translation").innerHTML = e.target.value)
 </script>
 </body>
 
