@@ -2,61 +2,44 @@
 <html>
 <head>
     <title>Estridi Tutorial</title>
+    <script src="//unpkg.com/alpinejs" defer></script>
 </head>
 
 <body>
-<h1>Estridi tutorial</h1>
-<div style="display: flex; flex-direction: column; width: 10rem;">
+<h1>Estridi Tutorial</h1>
+<div x-data="{name: 'Some Name', birthday: '1980-01-18', message: ''}">
     <label for="name">Name</label>
-    <input id="name" type="text">
+    <input type="text" id="name" :value="name" @change="name=$event.target.value">
     <label for="birthday">Birthday</label>
-    <input id="birthday" type="date">
+    <input type="date" id="birthday" :value="birthday" @change="birthday=$event.target.value">
+    <button @click="name=''; birthday=''; message='';" id="clear">Clear</button>
+    <button @click="
+        if(!name || !birthday) message='Validation error';
+        else fetch('/submit.json')
+        .then(r=>r.json())
+        .then(r=>message=r.message)
+        .catch(()=>message='Service error');
+    " id="submit">
+        Submit
+    </button>
+    <div id="msg" x-text="message"></div>
 </div>
-<div id="validation" style="color: red;"></div>
-<div style="display: flex; flex-direction: row; width: 10rem;">
-    <button id="clear">Clear</button>
-    <button id="submit">Submit</button>
+<br/><br/><br/>
+<div x-data="{value:''}">
+    <button @click="value='A'" id="a-btn">A</button>
+    <button @click="value='B'" id="b-btn">B</button>
+    <div x-text="value" id="a-or-b"></div>
 </div>
-<h1 id="message" style="color: green;"></h1>
-<div>
-    <button id="a-button">Show A</button>
-    <button id="b-button">Show B</button>
-    <div id="a-or-b"></div>
-</div>
-<div>
-    <select id="numbers">
+<br/><br/><br/>
+<div x-data="{value:''}">
+    <select id="numbers" @change="value=$event.target.value">
+        <option></option>
         <option value="Ett">One</option>
         <option value="Två">Two</option>
         <option value="Tre">Three</option>
     </select>
-    <div id="translation"></div>
+    <div x-text="value" id="number-message"></div>
 </div>
-<script>
-  document.getElementById("clear").addEventListener("click", () => {
-    document.getElementById("name").value = ""
-    document.getElementById("birthday").value = ""
-    document.getElementById("validation").innerHTML = ""
-  })
-  document.getElementById("submit").addEventListener("click", () => {
-    if (document.getElementById("name").value === "" ||
-      document.getElementById("birthday").value === "") {
-      document.getElementById("validation").innerHTML = "validation error"
-    } else {
-      document.getElementById("validation").innerHTML = ""
-      fetch("/submit.json")
-        .then(r => r.json())
-        .then((data) => document.getElementById("message").innerHTML = data.message)
-        .catch(() => document.getElementById("validation").innerHTML = "service error")
-    }
-  })
-  document.getElementById("a-button")
-    .addEventListener("click", () => document.getElementById("a-or-b").innerHTML = "A")
-  document.getElementById("b-button")
-    .addEventListener("click", () => document.getElementById("a-or-b").innerHTML = "B")
-  document.getElementById("numbers")
-    .addEventListener("change", (e) =>
-      document.getElementById("translation").innerHTML = e.target.value)
-</script>
 </body>
 
 </html>

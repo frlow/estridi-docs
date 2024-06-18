@@ -33,6 +33,9 @@ After you have run the command successfully you should notice 3 new files
 - **scraped.json**
 
 ## Install playwright
+```bash
+npx playwright install
+```
 
 ## Your first test
 now it is time to implement your first test. So in
@@ -168,8 +171,32 @@ switch (args.key) {
 # Advanced features
 
 ## Filter paths
+```typescript
+filterPaths: ({allPaths, getGateways}) =>
+        allPaths.filter(path => {
+            const gateways = getGateways(path)
+            if (gateways
+                .filter(g => g.text === "A selected")
+                .some((g, _, arr) => g.value !== arr[0].value))
+                return false
+            // Maybe more filters??
+            return true
+        })
+```
 
 ## Variants
+```typescript
+switch(args) {
+    case "112:621: Show dropdown Values": {
+        const table = args.getTable("112:620: Dropdown")
+        for (const row of table.values) {
+            await expect(args.page.locator("#numbers")
+                .locator(`option:has-text('${row.Id}')`)).toBeAttached()
+        }
+        break
+    }
+}
+```
 
 ## Breaking out separate files
 You can define a function with types based on Handles

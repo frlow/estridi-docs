@@ -9,7 +9,7 @@
     "estridi": "estridi"
   },
   "devDependencies": {
-    "estridi": "^0.3.29",
+    "estridi": "^0.3.31",
     "serve": "^14.2.3",
     "@playwright/test": "^1.44.1",
     "typescript": "^5.4.5"
