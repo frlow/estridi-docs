@@ -38,7 +38,8 @@
     document.getElementById("validation").innerHTML = ""
   })
   document.getElementById("submit").addEventListener("click", () => {
-    if (document.getElementById("name").value === "" || document.getElementById("birthday").value === "") {
+    if (document.getElementById("name").value === "" ||
+      document.getElementById("birthday").value === "") {
       document.getElementById("validation").innerHTML = "validation error"
     } else {
       document.getElementById("validation").innerHTML = ""
@@ -48,9 +49,13 @@
         .catch(() => document.getElementById("validation").innerHTML = "service error")
     }
   })
-  document.getElementById("a-button").addEventListener("click", () => document.getElementById("a-or-b").innerHTML = "A")
-  document.getElementById("b-button").addEventListener("click", () => document.getElementById("a-or-b").innerHTML = "B")
-  document.getElementById("numbers").addEventListener("change", (e) => document.getElementById("translation").innerHTML = e.target.value)
+  document.getElementById("a-button")
+    .addEventListener("click", () => document.getElementById("a-or-b").innerHTML = "A")
+  document.getElementById("b-button")
+    .addEventListener("click", () => document.getElementById("a-or-b").innerHTML = "B")
+  document.getElementById("numbers")
+    .addEventListener("change", (e) =>
+      document.getElementById("translation").innerHTML = e.target.value)
 </script>
 </body>
 
